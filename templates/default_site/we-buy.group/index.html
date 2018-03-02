@@ -1,0 +1,58 @@
+{layout="inc/.layout"}
+
+<section class="we-buy-section-wrap  page-section">
+
+	{exp:channel:entries channel="we_buy" status="open" disable="comments|categories|member_data|pagination"}
+
+		{we_buy_info}
+
+			{if main_image}
+
+				{main_image}
+					<figure class="page-hero-image">
+						<img src="{url}" alt="{alt_text}">
+					</figure>
+				{/main_image}
+
+			{/if}
+
+			<div class="page-section-inner">
+
+				<h1 class="page-title">{title}</h1>
+
+				<div class="section-meta-wrap">{content}</div>
+
+			</div>
+
+		{/we_buy_info}
+
+	{/exp:channel:entries}
+
+
+	<div class="page-section-inner">
+
+		{exp:freeform:composer form_name="we_buy" ajax="yes" form:id="we-buy-form"}
+
+            <div class="form-errors  js-form-errors"></div>
+
+            <label for="full_name" class="label  label--large">Full Name</label>
+			<input type="text" autocomplete="off" data-handle-field="true" name="full_name" id="full_name" class="input  input--large" tabindex="1" required>
+
+            <label for="email" class="label  label--large">Email</label>
+			<input type="email" autocomplete="off" data-handle-field="true" name="email" id="email" class="input  input--large" tabindex="2" required>
+
+            <label for="phone_number" class="label  label--large">Phone Number</label>
+			<input type="number" autocomplete="off" data-handle-field="true" pattern="\d*" name="phone_number" id="phone_number" class="input  input--large" maxlength="16" tabindex="3" required>
+
+            <label for="user_message" class="label  label--large">Describe your watch here</label>
+			<textarea name="user_message" id="user_message" data-handle-field="true" class="input  input--large" tabindex="4" required></textarea>
+
+			<input type="file" name="file[]" id="watch-upload" class="input  input--large" multiple tabindex="5" required>
+
+			<button type="submit" class="button  button--large  button--black  margin-top--s" name="submit" tabindex="6">Send Information</button>
+
+		{/exp:freeform:composer}
+
+	</div>
+
+</section>

@@ -1,0 +1,24 @@
+{layout="inc/.layout"}
+
+
+
+
+<?php
+
+    function returnSingleImage($data, $delimiter, $index){
+
+        $array = explode($delimiter, $data);
+
+        return $array[$index];
+
+    }
+
+?>
+
+
+
+
+{!--
+    Embed the archived products template.
+--}
+{embed="products/archive-output"}

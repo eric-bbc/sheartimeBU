@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+        {exp:seo_lite use_last_segment='yes' title_postfix='{embed:title_postfix}' default_title='{embed:default_title}' default_description='{embed:default_description}'}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#e66b08">
+
+        <link rel="shortcut icon" type="image/png" href="/css/imgs/favicon.png">
+        <link rel="stylesheet" href="/css/app.css">
+
+        <script src="/js/vendor/modernizr-custom.js"></script>
+
+    </head>
+    <body class="page--{if segment_1}{segment_1}{if:else}index{/if}  {if segment_2}page--{segment_2}{/if}">
+
+
+        <header class="main-header">
+
+            <a href="/" class="main-logo-wrap  clean-link"><img src="/css/imgs/logo-transparent.png" alt="Sheartime" class="main-logo-wrap__logo"></a>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a class="js-nav-item  {if segment_1 == ''}active{/if}" href="/">New</a></li>
+                    <li><a class="js-nav-item  {if segment_2 == 'archive'}active{/if}" href="/products/archive/">Archive</a></li>
+                    <li><a class="js-nav-item  {if segment_1 == "we-buy"}active{/if}" href="/we-buy/">We Buy</a></li>
+                    <li><a class="js-nav-item  {if segment_1 == 'terms'}active{/if}" href="/terms/">Terms</a></li>
+                    <li><a class="js-nav-item  {if segment_1 == 'about'}active{/if}" href="/about/">About</a></li>
+                    <li><a class="js-nav-item  {if segment_1 == 'contact'}active{/if}" href="/contact/">Contact</a></li>
+                    <li><a {if segment_1 == "press"}class="active"{/if} href="/press/">Press</a></li>
+                    <li><a class="js-nav-item  {if segment_1 == 'instagram'}active{/if}" href="/instagram/">Instagram</a></li>
+                </ul>
+            </nav>
+
+
+            <div class="search-toggle  js-search-toggle">
+                <i class="material-icons">&#xE8B6;</i>
+            </div>
+
+
+            <div class="menu-icon  js-toggle" data-toggle="main-nav--mobile">
+                <span class="menu-icon__line"></span>
+                <span class="menu-icon__line"></span>
+                <span class="menu-icon__line"></span>
+            </div>
+
+
+            <div class="search-toggle--mobile  js-search-toggle">
+                <i class="material-icons">&#xE8B6;</i>
+            </div>
+
+
+            <nav class="main-nav--mobile  clearfix">
+                <ul class="nav-list">
+                    <li><a {if segment_1 == ""}class="active"{/if} href="/">New</a></li>
+                    <li><a {if segment_2 == "archive"}class="active"{/if} href="/products/archive/">Archive</a></li>
+                    <li><a {if segment_1 == "we-buy"}class="active"{/if} href="/we-buy/">We Buy</a></li>
+                    <li><a {if segment_1 == "terms"}class="active"{/if} href="/terms/">Terms</a></li>
+                    <li><a {if segment_1 == "about"}class="active"{/if} href="/about/">About</a></li>
+                    <li><a {if segment_1 == "contact"}class="active"{/if} href="/contact/">Contact</a></li>
+                    <li><a {if segment_1 == "press"}class="active"{/if} href="/press/">Press</a></li>
+                    <li><a {if segment_1 == "instagram"}class="active"{/if} href="/instagram/">Instagram</a></li>
+                </ul>
+            </nav>
+
+
+            {!--
+                The desktop footer
+            --}
+            <div class="header-footer-content">
+
+                {social_media}
+
+                {footer_info}
+
+            </div>
+
+        </header>
+
+
+        {!--
+            The main content
+        --}
+        <main id="main" class="js-animate  js-main" animate-class="main--loaded">
+            <div id="transport-fetch">
+                {layout:contents}
+            </div>
+        </main>
+
+
+        {!--
+            The mobile footer
+        --}
+        <footer class="mobile-footer">
+
+            <div class="header-footer-content">
+
+                {social_media}
+
+                {footer_info}
+
+            </div>
+
+        </footer>
+
+
+        <div class="search-wrap  js-search-wrap-cover">
+
+            <div class="relative  margin--m  margin--s-on-m">
+
+                <form action="/search/" class="js-search-form">
+
+                    {!-- this search form doesnt utilize EE's search module.
+                         It used search-fields and get_parameters by Mark Croxton --}
+
+                    <input type="text" autocomplete="off" id="search-input-field" name="keyword" class="search-wrap__input  js-search-input  js-search-suggest" placeholder="Search Watches" maxlength="100" tabindex="1">
+
+                    <div class="js-psuedo-placeholder  search-wrap__placeholder"></div>
+
+                </form>
+
+            </div>
+
+
+            <div id="js-search-load-container"></div>
+
+            <div class="text-align--center">
+                <div class="js-load-more  search-load-more  button  button--m  button--black  hidden">Load More</div>
+            </div>
+
+
+            {!--
+                Build the search terms for the live search.
+            --}
+
+            <div class="hidden">
+                {exp:channel:entries channel="products" status="open" limit="99999" disable="comments|categories|member_data|pagination" dynamic="no" cache="yes" refresh="1440"}
+
+                    <div class="js-search-term">{title}</div>
+                    <div class="js-search-term"><?php echo str_replace("{brand} ", "", "{title}") ?></div>
+                    <div class="js-search-term">{ref}</div>
+
+                {/exp:channel:entries}
+            </div>
+
+        </div>
+
+
+        <div class="load-wrap  js-animate" animate-class="hidden">
+            <img src="/css/imgs/loader.gif" alt="Loading" width="50" height="50">
+        </div>
+
+
+        <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "LocalBusiness",
+          "email": "sales@sheartime.com",
+          "telephone": "16467733470",
+          "url": "{site_url}",
+          "logo": "{site_url}css/imgs/logo-transparent.png",
+          "name": "Sheartime"
+        }
+        </script>
+
+        <script src="/js/app-min.js"></script>
+
+    </body>
+</html>

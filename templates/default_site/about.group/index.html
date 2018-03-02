@@ -1,0 +1,31 @@
+{layout="inc/.layout"}
+
+<section class="about-section-wrap  page-section">
+
+	{exp:channel:entries channel="about" status="open"}
+		
+		{about_info}
+				
+			{if main_image}
+
+				{main_image}
+					<figure class="page-hero-image">
+						<img src="{url}" alt="{alt_text}">
+					</figure>
+				{/main_image}
+
+			{/if}
+				
+			<div class="page-section-inner">
+
+				<h1 class="page-title">{title}</h1>
+
+				<div class="section-meta-wrap">{content}</div>
+		
+			</div>
+
+		{/about_info}
+
+	{/exp:channel:entries}
+	
+</section>

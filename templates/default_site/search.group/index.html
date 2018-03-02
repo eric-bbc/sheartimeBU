@@ -1,0 +1,43 @@
+<?php
+    
+    if(isset($_GET["keyword"]) && strlen($_GET["keyword"]) > 1){
+        $response = $_GET["keyword"];
+    }
+
+
+    function returnSingleImage($data, $delimiter, $index){
+
+        $array = explode($delimiter, $data);
+
+        return $array[$index];
+
+    }
+
+?>
+
+
+
+{layout="inc/.layout"}
+
+
+
+<div class="product-as-grid">
+    
+    {exp:search_fields 
+        search:title="<?php echo $response; ?>"
+        search:ref="<?php echo $response; ?>"
+        search:sku="<?php echo $response; ?>"
+        channel="products"
+        operator="OR"
+        min_length="2"
+        parse="inward"}
+
+        {exp:channel:entries entry_id="{search_results}" channel="products" status="open" limit="99999" disable="comments|categories|member_data|pagination" orderby="sold" sort="asc"}
+
+            {embed="products/loop" sold="{sold}" title="{title}" brand="{brand}" price="{price}" product_date="{product_date}" ref="{ref}" archived_images="{archived_images}" images_url="{images:url}" images_alt_text="{images:alt_text}" title_permalink='{title_permalink="/products"}'}
+
+        {/exp:channel:entries}
+
+    {/exp:search_fields}
+
+</div>

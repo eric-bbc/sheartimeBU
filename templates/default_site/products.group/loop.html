@@ -1,0 +1,74 @@
+
+{!--
+
+This file should be passed in as an embedded template
+We embed it to have different PHP parsing orders.
+
+Ex:
+
+{embed="products/loop" title="{title}" brand="{brand}" price="{price}" product_date="{product_date}" ref="{ref}" archived_images="{archived_images}" images_url="{images:url}" title_permalink='{title_permalink="/products"}'}
+
+--}
+
+
+<div class="product">
+            
+    <a href="{embed:title_permalink}" class="product__wrap  clean-link">
+
+        <div class="product__image-wrap">
+        
+            <div class="aspect-ratio--3-4">
+                
+                {!--
+                    Get the image regularly.
+                --}
+
+                {if embed:archived_images == ""}
+
+                    <div class="product__image  js-lazy" data-original='{embed:images_url}' style='background-image: url("/css/imgs/loader.gif");'></div>
+
+                {if:else}
+
+                    {!--
+                        If its an archived image, we get it from a link, 
+                        so we must use our returnSingleImage function to 
+                        show only one image.
+                    --}
+
+                    <div class="product__image  js-lazy" data-original='<?php echo returnSingleImage("{embed:archived_images}", ",", 0); ?>' style='background-image: url("/css/imgs/loader.gif");'></div>
+
+                {/if}
+
+            </div>
+
+        </div>
+
+
+        <div class="product__info">
+
+            <div class="display--inline-block  text-transform--uppercase">
+
+                <div>{if embed:product_date}{embed:product_date}{/if} {if embed:ref}Reference # {embed:ref}{/if}</div>
+
+                <h2 class="product__title">
+                
+                {if embed:brand}{embed:brand}<br>{/if}
+                <?php echo str_replace("{embed:brand} ", "", "{embed:title}") ?></h2>
+
+                <strong class="product__price">
+                    {if embed:price && embed:price != ""}
+                        {embed:price}
+                    {if:elseif embed:price == "" && embed:sold == "1"}
+                        Sold
+                    {if:else}
+                        Price Upon Request
+                    {/if}
+                </strong>
+
+            </div>
+
+        </div>
+
+    </a>
+
+</div>

@@ -1,0 +1,119 @@
+
+{!--
+    Check if the filter GET variable is present.
+--}
+<?php
+
+    $filterSet = false;
+
+    if(isset($_GET["filter"])){
+        $filterSet = true;
+        $sortQuery = $_GET["filter"];
+    }
+
+?>
+
+
+
+{!--
+
+This file should be passed in as an embedded template
+We embed it to have different PHP parsing orders.
+
+Ex:
+
+{embed="products/archive-output"}
+
+--}
+
+
+
+{!-- filter archived products wrap --}
+
+<section class="bar  filter">
+
+    {!-- <h3 class="filter__title">sort the archive by</h3> --}
+    
+    <div class="filter__title">
+    
+		<div class="search-toggle  js-search-toggle">
+			<i class="material-icons">&#xE8B6;</i>
+		</div>
+	
+	</div>
+    
+    <div class="dropdown  js-toggle" toggle-self="true">
+
+        <div class="dropdown-inner">
+
+            <div class="dropdown-title"><?php if($filterSet){ echo $sortQuery; } else { echo "sort the archive by"; } ?></div>
+            
+            <div class="dropdown-list">
+                
+                <?php if($filterSet){?>
+                    <a href="{site_url}products/archive" class="clean-link  dropdown-option">
+                        All Watches
+                    </a>
+                <?php } ?>
+
+                {exp:query sql="SELECT DISTINCT field_id_18 AS category FROM exp_channel_data WHERE field_id_23 = '1' ORDER BY category ASC"}
+                    <a href="{site_url}products/archive?filter={category}" class="clean-link  dropdown-option">
+                        {category}
+                    </a>
+                {/exp:query}
+
+            </div>
+            
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+{!--
+    If we have a filter set, filter the products.
+--}
+<?php
+
+    if($filterSet){?>
+
+    <div class="product-as-grid">
+
+        {exp:channel:entries channel="products" limit="99999" status="open" orderby="title" sort="asc" disable="comments|categories|member_data|pagination" search:category="=<?php echo $sortQuery; ?>" search:archive="=1"}
+
+           {embed="products/loop" sold="{sold}" title="{title}" brand="{brand}" price="{price}" product_date="{product_date}" ref="{ref}" archived_images="{archived_images}" images_url="{images:url}" title_permalink='{title_permalink="/products"}'}
+
+        {/exp:channel:entries}
+
+    </div>
+
+<?php } ?>
+
+
+
+
+{!--
+    if no filter is set then we'll show all the archived products
+--}
+<?php
+
+    if($filterSet == false){?>
+
+    <div class="product-as-grid">
+
+        {exp:channel:entries channel="products" status="open" limit="30" paginate_type="field" paginate="bottom" orderby="title" sort="asc" disable="comments|categories|member_data" search:archive="=1"}
+            
+            {embed="products/loop" sold="{sold}" title="{title}" brand="{brand}" price="{price}" product_date="{product_date}" ref="{ref}" archived_images="{archived_images}" images_url="{images:url}" title_permalink='{title_permalink="/products"}'} 
+            
+            {paginate}
+                <div class="pagination-wrap">Page {current_page} of {total_pages}<div class="total-links-wrap">{pagination_links}</div></div>
+            {/paginate}
+
+        {/exp:channel:entries}
+
+    </div>
+
+<?php } ?>

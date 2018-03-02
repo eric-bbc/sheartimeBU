@@ -1,0 +1,68 @@
+{layout="inc/.layout"}
+
+<section class="page-section">
+
+    {exp:channel:entries channel="press" status="open"}
+                
+        <div class="page-section-inner">
+
+            <h1 class="page-title">{title}</h1>
+
+        </div>
+        
+        
+        
+       <div class="js-fitvids">
+       
+
+       
+	   <iframe src="https://player.vimeo.com/video/90372414?color=ffffff&byline=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+   
+
+       
+       
+       
+       
+       
+       </div> 
+        
+        
+{!--      Your comments will go in here.
+You can even span it across multiple lines.     --}
+ {!--        
+        <div class="clearfix">
+            {press_images}
+
+                <div class="press-item">
+
+                    <div class="press-item__aspect-ratio">
+                        
+                        {if link}
+                        <a href="{link}" target="_blank">
+                        {/if}
+                
+                        <div class="aspect-ratio__object" style="background-image: url({image:url});"></div>
+
+                        {if link}
+                        </a>
+                        {/if}
+
+                    </div>
+                    
+                </div>
+
+            {/press_images}
+        </div>
+        
+        
+
+ --}       
+        
+        
+        
+        
+        
+
+    {/exp:channel:entries}
+    
+</section>

@@ -1,0 +1,220 @@
+{layout="inc/.layout"}
+
+
+{!--
+    The product page.
+--}
+
+
+<?php
+
+    function splitImages($data, $delimiter){
+
+        $array = explode($delimiter, $data);
+
+        foreach ($array as $key) {
+            echo '<div class="aspect-ratio--16-9-to-1-1"><div class="owl-lazy  owl-item__bg  js-click-change" style="background-image: url(/css/imgs/loader.gif);" data-src="' . $key . '"></div></div>';
+        }
+
+    }
+
+?>
+
+
+{exp:channel:entries channel="products" status="open" disable="comments|member_data|pagination"}
+
+
+<section class="single-product  js-transporter-overlay">
+    
+    <div class="full-product-carousel  hidden-transparent">
+
+        <div class="center-table  table-fixed">
+            <div class="center-table-cell  js-close-trigger  relative">
+                
+
+                {!--
+                    Overlay carousel of product images.
+                --}
+                <div class="js-full-product-carousel  full-vh  height-vh--full  carousel  carousel--small">
+
+                    {!--
+                        Get the images regularly.
+                    --}
+
+                    {if archived_images == ""}
+                        
+                        {images}
+                            <div class="owl-lazy  owl-item__bg  js-click-change" style="background-image: url('/css/imgs/loader.gif');" data-src="{url}"></div>
+                        {/images}
+
+                    {if:else}
+
+                        {!--
+                            Its an archived image, which returns a comma seperated list of links. We must split the links and output an image for each.
+                            Our splitImages function is above.
+                        --}
+                        
+                        <?php splitImages("{archived_images}", ","); ?>
+
+                    {/if}
+
+                </div>
+
+                <i class="product-wrap__zoom  product-wrap__zoom--out  material-icons  js-trigger-product-zoom">&#xE900;</i>
+
+            </div>
+        </div>
+
+    </div>
+
+
+	<div class="product-wrap">
+
+		<div class="relative">
+			
+
+            {!--
+                Static carousel of product images.
+            --}
+			<div class="product-img-wrap  carousel  js-product-carousel  js-set-vh" data-vh="75" set-max-height="true">
+
+                {if archived_images == ""}
+                    
+                    {images}
+                        <div class="aspect-ratio--16-9-to-1-1">
+                            <div class="owl-lazy  owl-item__bg  js-click-change" style="background-image: url('/css/imgs/loader.gif');" data-src="{url}"></div>
+                        </div>
+                    {/images}
+
+                {if:else}
+                    
+                    <?php splitImages("{archived_images}", ","); ?>
+
+                {/if}
+
+			</div>
+
+			<i class="material-icons  product-wrap__zoom  js-trigger-product-zoom" data-index="0">&#xE8FF;</i>
+			
+		</div>
+
+		<div class="product-wrap__info">
+
+			<div class="product-wrap__top">
+                
+
+                {!--
+                    Product title.
+                --}
+				<h1 class="product-title">{title}</h1>
+
+				<div class="misc-product-details-wrap  clearfix">
+                
+
+                    {!--
+                        Product ref, date and sku.
+                    --}
+					<div class="float--left  clearfix">
+                        {if product_date}
+						  <div class="float--left  margin-right--s">{product_date}</div>
+                        {/if}
+
+                        {if ref}
+						  <div class="float--left  margin-right--s">Reference # {ref}</div>
+                        {/if}
+                        
+						<div class="float--left">Sku # {sku}</div>
+					</div>
+                    
+
+                    {!--
+                        Product price.
+                    --}
+					<strong class="product-price  float--right  display-center-flex">
+                        {if price && price != ""}
+                            <div>{price}</div>
+                        {if:elseif price == "" && sold == 1}
+                            <div>Sold</div>
+                        {if:else}
+                            <div>Price Upon Request</div>
+                        {/if}
+
+                        <div class="margin-left--xs  button  button--small  button--black  display--inline-block  product-inquire">
+                            <a href="mailto:sales@sheartime.com?subject=Inquiry&body=Watch%3A%20{title}%20Sku%20%23%3A%20{sku}" class="clean-link">Inquire <span class="material-icons">&#xE0E1;</span></a>
+                        </div>
+                    </strong>
+
+				</div>
+
+			</div>
+            
+
+            {!--
+                Misc product details.
+            --}
+			<div class="product-wrap__bottom">
+    
+				{if dial}
+					<div class="col">
+						<h2 class="col-title">Dial</h2>
+						{dial}
+					</div>
+				{/if}
+
+				{if case}
+					<div class="col">
+						<h2 class="col-title">Case</h2>
+						{case}
+					</div>
+				{/if}
+
+				{if accessories}
+					<div class="col">
+						<h2 class="col-title">Accessories</h2>
+						{accessories}
+					</div>
+				{/if}
+
+				{if comments}
+					<div class="col">
+						<h2 class="col-title">Comments</h2>
+						{comments}
+					</div>
+				{/if}
+
+			</div>
+            
+		</div>
+
+	</div>
+
+</section>
+
+
+<div class="js-transporter-gap  transporter-gap"></div>
+
+
+<div class="js-transport-container  transport-container">
+    
+    
+
+</div>
+
+
+
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Product",
+        "brand": {
+            "name": "Sheartime"
+        },
+        "category": "{category}",
+        "description": "{dial}",
+        "name": "{title}",
+        "url": "{site_url}{segment_1}/{segment_2}"
+    }
+</script>
+
+
+{/exp:channel:entries}

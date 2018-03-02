@@ -1,0 +1,29 @@
+{layout="inc/.layout"}
+
+
+<?php
+
+    function returnSingleImage($data, $delimiter, $index){
+
+        $array = explode($delimiter, $data);
+
+        return $array[$index];
+
+    }
+
+?>
+
+
+<div>
+    
+    {!--
+        Showing only new and un sold products.
+    --}
+
+	{exp:channel:entries channel="products" limit="99999" status="open" orderby="date" sort="asc" disable="comments|categories|member_data|pagination" search:new="=1" search:sold="=not 1" show_future_entries="yes"}
+
+		{embed="products/loop" sold="{sold}" title="{title}" brand="{brand}" price="{price}" product_date="{product_date}" ref="{ref}" archived_images="{archived_images}" images_url="{images:url}" title_permalink='{title_permalink="/products"}'} 
+
+	{/exp:channel:entries}
+	
+</div>

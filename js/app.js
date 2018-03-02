@@ -16,7 +16,6 @@
 
 
 function callProductCarousel(){
-
     var productCarousel = $(".js-product-carousel").owlCarousel({
         nav: true,
         dots: false,
@@ -80,7 +79,6 @@ function callProductCarousel(){
 
 
 function fullProductCarousel(index){
-
     var $fullProductCarousel = $(".js-full-product-carousel").owlCarousel({
         nav: true,
         dots: false,
@@ -88,6 +86,7 @@ function fullProductCarousel(index){
         slideBy: 1,
         lazyLoad: true,
         startPosition: index,
+        loop: true,
         navText: ["<img src='/css/imgs/chevron-left.svg'>", "<img src='/css/imgs/chevron-right.svg'>"]
     });
 
@@ -109,7 +108,6 @@ function fullProductCarousel(index){
 
 
     $trigger.on("click", function(){
-
         fullProductCarousel($(this).data("index"));
 
         $carousel.toggleClass("visible-opaque").toggleClass("hidden-transparent");
@@ -549,7 +547,6 @@ var transporter = (function(document, window){
 (function(){
 
     // We Buy Form
-
     $("#we-buy-form").on("submit", function(e){
 
         var $self = $(this);
@@ -644,6 +641,17 @@ var transporter = (function(document, window){
         }
     });
 
+    Forms.init({
+        form: "#we-buy-form",
+        ajax: true,
+        resetOnSuccess: true,
+        success: function(){
+            $('button').text('Thank You!')
+            $('#watch-upload').removeClass('uploaded')
+        }
+    });
+
+
 
 
 })();
@@ -667,3 +675,30 @@ var transporter = (function(document, window){
 
 
 })();
+
+
+watchUpload()
+contactUpload()
+
+function watchUpload() {
+
+  var $input = $('#watch-upload')
+
+  $input.on('change', function(){
+      if ( this.files.length > 0 ){
+        $input.addClass('uploaded')
+      }
+
+  })
+}
+
+function contactUpload() {
+  var $input = $('#contact-upload')
+
+  $input.on('change', function(){
+      if ( this.files.length > 0 ){
+        $input.addClass('uploaded')
+      }
+
+  })
+}

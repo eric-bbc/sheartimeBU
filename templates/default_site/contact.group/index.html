@@ -1,0 +1,62 @@
+{layout="inc/.layout"}
+
+<section class="contact-section-wrap  page-section">
+
+	{exp:channel:entries channel="contact" status="open" disable="comments|categories|member_data|pagination"}
+
+		{contact_info}
+
+			{if main_image}
+
+				{main_image}
+					<div class="page-hero-image">
+
+                        <div class="aspect-ratio--16-9">
+                            <div class="aspect-ratio__object" style="background-image: url({url});"></div>
+                        </div>
+
+					</div>
+				{/main_image}
+
+			{/if}
+
+			<div class="page-section-inner">
+
+				<h1 class="page-title">{title}</h1>
+				<div>test</div>
+
+				<div class="section-meta-wrap">{content}</div>
+
+			</div>
+
+		{/contact_info}
+
+	{/exp:channel:entries}
+
+
+	<div class="page-section-inner  margin-top--m">
+
+		{exp:freeform:composer required="full_name|email|phone_number|user_message" form_name="contact" ajax="yes" form:id="contact-form"}
+
+            <label for="full_name" class="label  label--large">Full Name</label>
+			<input type="text" data-handle-field="true" autocomplete="off" name="full_name" id="full_name" class="input  input--large" tabindex="1" required>
+
+            <label for="email" class="label  label--large">Email</label>
+			<input type="email" data-handle-field="true" autocomplete="off" name="email" id="email" class="input  input--large" tabindex="2" required>
+
+            <label for="phone_number" class="label  label--large">Phone Number</label>
+			<input type="number" data-handle-field="true" autocomplete="off" pattern="\d*" name="phone_number" id="phone_number" class="input  input--large" maxlength="16" tabindex="3" required>
+
+            <label for="user_message" class="label  label--large">Question or watch you're looking for</label>
+			<textarea name="user_message" id="user_message" class="input  input--large" tabindex="4" required></textarea>
+			<input type="file" name="file[]" id="contact-upload" class="input  input--large" multiple tabindex="5">
+
+			<button type="submit" class="button  button--large  button--black  margin-top--s" name="submit" tabindex="5">Send Information</button>
+
+		{/exp:freeform:composer}
+
+		<div class='success-message  hidden  title--xl  margin-top--l'>Thanks</div>
+
+	</div>
+
+</section>
