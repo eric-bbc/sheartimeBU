@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'DinMedium';
+    src: url('/css/fonts/DINPro-CondMedium.woff2') format('woff2'),
+         url('/css/fonts/DINPro-CondMedium.woff') format('woff'),
+         url('/css/fonts/DINPro-CondMedium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'DinBold';
+    src: url('/css/fonts/DINCondensed-Bold.woff2') format('woff2'),
+         url('/css/fonts/DINCondensed-Bold.woff') format('woff'),
+         url('/css/fonts/DINCondensed-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Mono Social Icons Font';
+    src: url('/css/fonts/MonoSocialIconsFont-1.10.woff') format('woff'),
+         url('/css/fonts/MonoSocialIconsFont-1.10.ttf') format('truetype'),
+         url('/css/fonts/MonoSocialIconsFont-1.10.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/css/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+       url(/css/fonts/MaterialIcons-Regular.woff) format('woff'),
+       url(/css/fonts/MaterialIcons-Regular.ttf) format('truetype');
+}

@@ -1,0 +1,425 @@
+/*------------------------------------*\
+    #TYPE
+\*------------------------------------*/
+
+
+
+// Font Faces
+
+// System fonts won't render.
+// Name must reference a @font-face import
+
+
+$font-family: (
+
+    "base":           unquote("DinMedium"),
+
+    "medium":         unquote("DinMedium"),
+
+    "bold":           unquote("DinBold")
+
+);
+
+
+
+// Font Sizes
+
+$font-size: (
+
+    "base": 2rem,
+
+    "xs":   1.4rem,
+
+    "s":    1.6rem,
+
+    "m":    2.2rem,
+
+    "l":    2.4rem,
+
+    "xl":   3.3rem,
+
+    "xxl":  7rem,
+
+    "mega":  10rem
+
+);
+
+
+
+// Other Typography
+
+$letter-spacing: (
+
+    "none": 0,
+
+    "xs":   0.01em,
+
+    "s":    0.02em,
+
+    "m":    0.05em,
+
+    "l":    0.08em,
+
+    "xl":   0.10em,
+
+    "xxl":  0.14em
+
+);
+
+
+
+$line-height: (
+
+    "xs":   1em,
+
+    "s":    1.1em,
+
+    "m":    1.25em,
+
+    "l":    1.5em,
+
+    "xl":   1.8em,
+
+    "xxl":  2.5em
+
+);
+
+
+
+
+
+/*------------------------------------*\
+    #COLORS
+\*------------------------------------*/
+
+
+
+$color: (
+    
+    "black": #111,
+
+    "light-black": #444,
+
+    "white": #fff,
+
+    "gray": gray,
+
+    "dark-gray": #40372C,
+
+    "header-gray": #353535,
+
+    "medium-gray": #c0c0c0,
+
+    "light-gray": #ccc,
+
+    "extra-light-gray": #eaeaea,
+
+    "brown": #b0a598,
+
+    "light-brown": #E7E1E1,
+
+    "orange": #e66b08
+
+);
+
+
+
+
+
+/*------------------------------------*\
+    #ICONS & IMAGES
+\*------------------------------------*/
+
+
+
+$closeIcon: (
+
+    "icon": "×",
+
+    "size": 22px,
+
+    "padding": 12px,
+
+    "topOffset": -10px,
+
+    "rightOffset": -4px
+
+);
+
+
+
+// Styles for a hamburger icon
+
+$menuIcon: (
+
+    "width": 30px,
+
+    "color": #F2F2F0,
+
+    "heightOfLines": 2px,
+
+    "spacingBetweenLines": 5px
+
+);
+
+
+
+
+/*------------------------------------*\
+    #SPACING
+\*------------------------------------*/
+
+
+
+$spacing: (
+
+    "none": 0,
+
+    "auto": unquote("auto"),
+
+    "xxs":  0.3em,
+
+    "xs":   0.5em,
+
+    "s":    1em,
+
+    "m":    2em,
+
+    "l":    2.5em,
+
+    "xl":   3.5em,
+
+    "xxl":  5em
+
+);
+
+
+
+
+/*------------------------------------*\
+    #MEDIA-QUERIES
+\*------------------------------------*/
+
+
+
+$mediaQuery: (
+    
+    "s":  unquote("(max-width: 550px)"),
+
+    "m":  unquote("(max-width: 800px)"),
+
+    "m2": unquote("(max-width: 1050px)"),
+
+    "l":  unquote("(max-width: 1250px)")
+
+    // "xl":  unquote("(max-width: 1400px)")
+
+);
+
+
+
+
+
+/*------------------------------------*\
+    #DISPLAY
+\*------------------------------------*/
+
+
+
+// Used only to create show-hide classes on breakpoints defined in $mediaQuery
+
+$display: (
+    
+    "block": block,
+
+    "inline-block": inline-block,
+
+    "none": none
+
+);
+
+
+
+
+
+/*------------------------------------*\
+    #Z-INDEX
+\*------------------------------------*/
+
+
+
+$zIndex: (
+
+    "negative": -1,
+
+    "base":     1,
+
+    "header":   10,
+
+    "overlay":  20,
+
+    "drawer":   15,
+
+    "max":      9999
+
+);
+
+
+
+
+/*------------------------------------*\
+    #RULES & BORDERS
+\*------------------------------------*/
+
+
+
+// Used for borders and hrs
+
+$line-width: (
+
+    "none":  0,
+
+    "s":     1px,
+
+    "m":     2px,
+
+    "l":     3px
+
+);
+
+
+
+$border-radius: (
+
+    "none": 0,
+
+    "s":    2px,
+
+    "m":    4px,
+
+    "l":    6px,
+
+    "half": 50%
+
+);
+
+
+
+
+
+/*------------------------------------*\
+    #BUTTONS
+\*------------------------------------*/
+
+
+
+$button-padding: (
+
+    "base": 5px 10px,
+
+    "s":    map-get($spacing, "xxs") map-get($spacing, "s"),
+
+    "m":    8px 22px,
+
+    "l":    12px 35px,
+
+);
+
+
+
+
+/*------------------------------------*\
+    #FORMS & INPUTS
+\*------------------------------------*/
+
+
+
+$input-padding: (
+
+    "base": 7px 10px,
+
+    "s":    map-get($spacing, "xxs") map-get($spacing, "xs"),
+
+    "m":    map-get($spacing, "xs") map-get($spacing, "s"),
+
+    "l":    map-get($spacing, "s") map-get($spacing, "l")
+
+);
+
+
+
+
+
+/*------------------------------------*\
+    #CSS3
+\*------------------------------------*/
+
+
+
+// All cubic-bezier transitions are easeInOut
+// See: http://easings.net/
+
+$transition-type: (
+
+    "linear": unquote("linear"),
+
+    "sine":   unquote("cubic-bezier(0.445, 0.05, 0.55, 0.95)"),
+
+    "quad":   unquote("cubic-bezier(0.455, 0.03, 0.515, 0.955)"),
+
+    "cubic":  unquote("cubic-bezier(0.645, 0.045, 0.355, 1)")
+    
+);
+
+
+
+$transition-speed: (
+    
+    "base":       0s,
+
+    "extra-slow": 1s,
+
+    "slow":       0.6s,
+
+    "medium":     0.4s,
+
+    "fast":       0.25s,
+
+    "extra-fast": 0.10s
+    
+);
+
+
+
+
+/*------------------------------------*\
+    #DRAWERS
+\*------------------------------------*/
+
+
+
+$drawer-width: 320px;
+
+
+$drawer-padding: map-get($spacing, "m");
+
+
+$drawer-overlay-color: fade-out(map-get($color, "gray"), 0.5);
+
+
+
+
+
+
+/*------------------------------------*\
+    #PAGE-CONTENT
+\*------------------------------------*/
+
+
+
+// Set the max width your page-content.
+// A class (.page-content-max-width) will be created based on this value.
+
+$page-content-max-width: 1000px;
+
+

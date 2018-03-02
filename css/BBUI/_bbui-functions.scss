@@ -1,0 +1,97 @@
+
+// You shouldn't need to change much in here except add new mixins
+
+
+
+/*------------------------------------*\
+    #MIXINS
+\*------------------------------------*/
+
+
+
+
+/*------------------------------------*\
+    #FUNCTIONS
+\*------------------------------------*/
+
+
+
+@mixin createClassesFromMap($property, $className, $map){
+
+    @each $key, $value in $map{
+
+        .#{$className} {
+            
+            &--#{$key}{
+                #{$property}: $value !important;
+            }
+        }
+
+    }
+}
+
+
+
+@mixin createMQClassesFromMap($property, $className, $map){
+
+    @each $key, $value in $map{
+
+        @each $MQKey, $MQValue in $mediaQuery{
+            
+            @media #{$MQValue}{
+                
+                .#{$className}--#{$key}-on-#{$MQKey}{
+                    #{$property}: $value !important;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+@mixin createNumberClasses($property, $className, $iterations){
+    
+    @for $i from 1 through $iterations{
+        
+        .#{$className}--#{$i}{
+            #{$property}: ($i * 100% / $iterations) !important;
+        }
+    }
+}
+
+
+
+@mixin createMQNumberClasses($property, $className, $iterations){
+    
+    @for $i from 1 through $iterations{
+
+        @each $MQKey, $MQValue in $mediaQuery{
+            
+            @media #{$MQValue}{
+
+                .#{$className}--#{$i}-on-#{$MQKey}{
+                    #{$property}: ($i * 100% / $iterations) !important;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+@mixin createIncrementalNumberClasses($property, $className, $increment, $max){
+
+    @for $i from 1 through $max{
+
+        $val: ($i * $increment);
+
+        .#{$className}--#{$val}{
+            #{$property}: #{$val}px !important;
+        }
+    }
+
+}

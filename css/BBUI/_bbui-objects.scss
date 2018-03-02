@@ -1,0 +1,42 @@
+.wysiwyg{
+
+    h1:not(.plain){
+        font-size: map-get($font-size, "xl");
+    }
+
+    h2:not(.plain){
+        font-size: map-get($font-size, "l");
+        font-family: map-get($font-family, "bold");
+    }
+
+    h3:not(.plain){
+        font-size: map-get($font-size, "m");
+    }
+
+    ol:not(.plain), ul:not(.plain){
+        margin-bottom: map-get($spacing, "s");
+        margin-left: map-get($spacing, "m");
+    }
+
+    ol, ul{
+        line-height: map-get($line-height, "l");
+    }
+
+    ol:not(.plain){
+        list-style-type: decimal;
+    }
+
+    ul:not(.plain){
+        list-style-type: square;
+    }
+
+    p:not(.plain){
+        margin-top: map-get($spacing, "s");
+        line-height: map-get($line-height, "l");
+    }
+
+    b:not(.plain), strong:not(.plain){
+        font-family: map-get($font-family, "bold");
+    }
+
+}

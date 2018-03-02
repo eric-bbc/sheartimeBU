@@ -1,0 +1,293 @@
+
+
+/*------------------------------------*\
+    #TABLES
+\*------------------------------------*/
+
+
+
+.center-table{
+    display: table;
+    height: 100%;
+    width:  100%;
+}
+
+
+.center-table-cell{
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+}
+
+
+
+
+/*------------------------------------*\
+    #DISPLAYS
+\*------------------------------------*/
+
+
+
+.display-center-flex{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+
+
+
+/*------------------------------------*\
+    #MISC-SIZING
+\*------------------------------------*/
+
+
+
+.page-content-max-width{
+    max-width: $page-content-max-width;
+    margin-left:  auto;
+    margin-right: auto;
+}
+
+
+
+
+
+/*------------------------------------*\
+    #TEXT
+\*------------------------------------*/
+
+
+
+.clip-text{
+    white-space: nowrap;
+    text-overflow: clip;
+    overflow: hidden;
+}
+
+
+.clip-text--ellipsis{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+
+
+
+
+/*------------------------------------*\
+    #VISIBILITY
+\*------------------------------------*/
+
+
+
+.hidden-transparent{
+    visibility: hidden;
+    opacity: 0;
+}
+
+
+.visible-opaque{
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
+
+
+/*------------------------------------*\
+    #RULES & #BORDERS
+\*------------------------------------*/
+
+
+
+.hr{
+    border: none;
+    height: map-get($line-width, "s");
+    display: block;
+    background-color: map-get($color, "light-gray");
+}
+
+
+.hr--medium{
+    height: map-get($line-width, "m");
+}
+
+
+.hr--thick{
+    height: map-get($line-width, "l");
+}
+
+
+
+
+
+/*------------------------------------*\
+    #BUTTONS
+\*------------------------------------*/
+
+
+
+.button{
+    transition: all map-get($transition-speed, "fast") map-get($transition-type, "cubic");
+    cursor: pointer;
+    padding: map-get($button-padding, "base");
+    border-radius: map-get($border-radius, "s");
+
+    &:active{
+        transform: scale(0.9, 0.9);
+    }
+
+    &[disabled]{
+        @extend .disabled;
+    }
+}
+
+
+
+// This class does not prevent functionality
+// Disable functionality using javascript
+
+.disabled{
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+}
+
+
+
+@include createClassesFromMap(padding, button, $button-padding);
+
+
+
+/*------------------------------------*\
+    #FORMS
+\*------------------------------------*/
+
+
+
+.input-label{
+    display: block;
+    color: map-get($color, "light-black");
+    margin-bottom: 4px;
+}
+
+
+.input-field{
+    border: solid map-get($line-width, "s") map-get($color, "light-gray");
+    padding: map-get($input-padding, "base");
+    color: map-get($color, "light-black");
+    border-radius: map-get($border-radius, "s");
+    transition: border-color map-get($transition-speed, "extra-fast") map-get($transition-type, "cubic");
+
+    &:hover{
+        border-color: darken(map-get($color, "light-gray"), 17%);
+    }
+
+    &:focus{
+        box-shadow: inset 0 1px 3px rgba(0,0,0,.2);
+        border-color: darken(map-get($color, "light-gray"), 17%);
+    }
+}
+
+
+.input-field--info{
+    background-color: map-get($color, "light-blue");
+}
+
+
+.input-field--warning{
+    background-color: map-get($color, "light-yellow");
+}
+
+
+.input-field--error{
+    background-color: map-get($color, "light-red");
+}
+
+
+.input-field--success{
+    background-color: map-get($color, "light-green");
+}
+
+
+
+// Creates input-field padding classes
+
+@include createClassesFromMap(padding, input-field, $input-padding);
+
+
+
+
+/*------------------------------------*\
+    #IMAGES
+\*------------------------------------*/
+
+
+
+.background-image--cover{
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+.background-image--contain{
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+
+
+
+/*------------------------------------*\
+    #ICONS
+\*------------------------------------*/
+
+
+
+.menu-icon{
+    width: map-get($menuIcon, "width");
+    cursor: pointer;
+}
+
+
+.menu-icon__line{
+    background: map-get($menuIcon, "color");
+    height: map-get($menuIcon, "heightOfLines");
+    margin-top: map-get($menuIcon, "spacingBetweenLines");
+    display: block;
+
+    &:nth-of-type(1){
+        margin-top: 0;
+    }
+}
+
+
+
+.close-icon{
+    position: absolute;
+    top:   map-get($closeIcon, "topOffset");
+    right: map-get($closeIcon, "rightOffset");
+    padding: map-get($closeIcon, "padding");
+    display: inline-block;
+    cursor: pointer;
+    transition: all map-get($transition-speed, "extra-fast") map-get($transition-type, "cubic");
+    font-size: map-get($closeIcon, "size");
+
+    &:after{
+        content: map-get($closeIcon, "icon");
+        font-size: inherit;
+    }
+
+    &:hover{
+        transform: scale(1.25, 1.25);
+    }
+
+    &:active{
+        transform: scale(0.6, 0.6);
+    }
+}

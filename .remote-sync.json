@@ -1,0 +1,16 @@
+{
+  "uploadOnSave": true,
+  "useAtomicWrites": true,
+  "deleteLocal": false,
+  "hostname": "138.197.101.28",
+  "port": "22",
+  "target": "/var/www/html/sheartime.com/public_html",
+  "ignore": [
+    ".remote-sync.json",
+    ".git/**"
+  ],
+  "username": "root",
+  "keyfile": "/Volumes/Macintosh HD/Users/ericjfarber/.ssh/id_rsa",
+  "watch": [],
+  "transport": "scp"
+}
