@@ -1,5 +1,5 @@
 <?php
-    
+
     if(isset($_GET["keyword"]) && strlen($_GET["keyword"]) > 1){
         $response = $_GET["keyword"];
     }
@@ -15,7 +15,7 @@
     } else {
         $offset = 0;
     }
-    
+
 
     function returnSingleImage($data, $delimiter, $index){
 
@@ -25,13 +25,15 @@
 
     }
 
+
+
 ?>
 
 
 
 <div class="product-as-grid">
-    
-    {exp:search_fields 
+
+    {exp:search_fields
         search:title="<?php echo $response; ?>"
         search:ref="<?php echo $response; ?>"
         search:sku="<?php echo $response; ?>"

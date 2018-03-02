@@ -115,100 +115,100 @@ or 0, the height of 100% of the window will be set.
 
 
 // Sugguest Search
-
-(function(){
-
-    'use strict';
-
-
-    var $input = $(".js-search-suggest");
-
-    var $searchTerm = $(".js-search-term");
-
-    var $psuedoPlaceholder = $(".js-psuedo-placeholder");
-
-    var keywords = [];
-
-    var tab = {
-        allowFinish: false,
-        keyword: ""
-    };
-
-
-    $searchTerm.each(function(index, el) {
-        keywords.push($.trim($(el).text().toUpperCase())); // Note were forcing uppercase
-    });
-
-
-    var uniqueKeys = uniqueArray(keywords).sort();
-
-
-    $input.on("blur", function(){
-        $psuedoPlaceholder.html("");
-    })
-    .on("keyup", function(){
-
-        var $self = $(this);
-
-        var count = $self.val().length;
-
-        var transformedVal = $self.val().toUpperCase(); // Note were forcing uppercase
-
-
-        function filterMatches(value){
-            return value.substring(0, count) === transformedVal;
-        }
-
-        var filtered = uniqueKeys.filter(filterMatches);
-
-
-        if(filtered.length && count > 1){
-
-            for (var i = 0, l = filtered.length; i < l; i++) {
-
-                if(filtered[i].substring(0, count) === transformedVal){
-
-                    // Returned match
-                    $psuedoPlaceholder.html(filtered[i]);
-
-                    tab.allowFinish = true;
-                    tab.keyword = filtered[i];
-                    
-                    break;
-                    
-                }
-
-            }
-
-        } else {
-            $psuedoPlaceholder.html("");
-            tab.allowFinish = false;
-        }
-
-
-        if(cache.$html.hasClass("touchevents") && tab.allowFinish){
-
-            $input.on("click", function(){
-                $input.val(tab.keyword).trigger('keyup');
-            });
-
-        }
-
-    })
-    .on("keydown", function(e){
-
-        if(tab.allowFinish && (e.which === 9 || e.which === 39)){ // Tab, right arrow key
-
-            e.preventDefault();
-
-            $input.val(tab.keyword);
-
-        }
-
-    });
-
-
-}());
+//
+// (function(){
+//
+//     'use strict';
+//
+//
+//     var $input = $(".js-search-suggest");
+//
+//     var $searchTerm = $(".js-search-term");
+//
+//     var $psuedoPlaceholder = $(".js-psuedo-placeholder");
+//
+//     var keywords = [];
+//
+//     var tab = {
+//         allowFinish: false,
+//         keyword: ""
+//     };
+//
+//
+//     $searchTerm.each(function(index, el) {
+//         keywords.push($.trim($(el).text().toUpperCase())); // Note were forcing uppercase
+//     });
+//
+//
+//     var uniqueKeys = uniqueArray(keywords).sort();
+//
+//
+//     $input.on("blur", function(){
+//         $psuedoPlaceholder.html("");
+//     })
+//     .on("keyup", function(){
+//
+//         var $self = $(this);
+//
+//         var count = $self.val().length;
+//
+//         var transformedVal = $self.val().toUpperCase(); // Note were forcing uppercase
+//
+//
+//         function filterMatches(value){
+//             return value.substring(0, count) === transformedVal;
+//         }
+//
+//         var filtered = uniqueKeys.filter(filterMatches);
+//
+//
+//         if(filtered.length && count > 1){
+//
+//             for (var i = 0, l = filtered.length; i < l; i++) {
+//
+//                 if(filtered[i].substring(0, count) === transformedVal){
+//
+//                     // Returned match
+//                     $psuedoPlaceholder.html(filtered[i]);
+//
+//                     tab.allowFinish = true;
+//                     tab.keyword = filtered[i];
+//
+//                     break;
+//
+//                 }
+//
+//             }
+//
+//         } else {
+//             $psuedoPlaceholder.html("");
+//             tab.allowFinish = false;
+//         }
+//
+//
+//         if(cache.$html.hasClass("touchevents") && tab.allowFinish){
+//
+//             $input.on("click", function(){
+//                 $input.val(tab.keyword).trigger('keyup');
+//             });
+//
+//         }
+//
+//     })
+//     .on("keydown", function(e){
+//
+//         if(tab.allowFinish && (e.which === 9 || e.which === 39)){ // Tab, right arrow key
+//
+//             e.preventDefault();
+//
+//             $input.val(tab.keyword);
+//
+//         }
+//
+//     });
+//
+//
+// }());
 
 
 
@@ -246,4 +246,3 @@ or 0, the height of 100% of the window will be set.
     });
 
 }());
-

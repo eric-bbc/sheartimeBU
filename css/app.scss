@@ -289,10 +289,10 @@ a.symbol:before {
 
 .search-wrap--visible{
     height: 100%;
-    overflow-y: hidden;
+    overflow-y: scroll;
 
     body{
-        overflow-y: hidden;
+        // overflow-y: hidden;
         height: 100%;
     }
 
@@ -340,7 +340,7 @@ a.symbol:before {
     top:    0;
     left:   $header-width;
     right:  0;
-    bottom: 0;
+    // bottom: 0;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     background: #E7E1E1;

@@ -3690,9 +3690,8 @@ a.symbol:before {
 
 .search-wrap--visible {
   height: 100%;
-  overflow-y: hidden; }
+  overflow-y: scroll; }
   .search-wrap--visible body {
-    overflow-y: hidden;
     height: 100%; }
   .search-wrap--visible .pagination-wrap {
     opacity: 0; }
@@ -3722,7 +3721,6 @@ a.symbol:before {
   top: 0;
   left: 200px;
   right: 0;
-  bottom: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #E7E1E1;

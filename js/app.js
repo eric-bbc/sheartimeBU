@@ -244,7 +244,7 @@ var LiveSearch = function(){
                 limit: settings.load.LIMIT,
                 offset: settings.load.offset
             }).done(function(data){
-
+                // console.log($.parseHTML(data));
                 var returnedLen = $(data).find(".product").length;
 
                 // Check if theres data returned.
@@ -274,6 +274,8 @@ var LiveSearch = function(){
                     });
 
                 } else {
+                  console.log('!!!!');
+                    console.log(settings.load.keywords);
                     // No data returned, so hide the load more button.
                     settings.load.$button.addClass("hidden");
                     $('.js-search-form').effect( "shake" );
@@ -636,8 +638,9 @@ var transporter = (function(document, window){
         ajax: true,
         resetOnSuccess: true,
         success: function(){
-            $("#contact-form").addClass('hidden');
-            $(".success-message").removeClass('hidden');
+          $('button').text('Thank You!')
+            // $("#contact-form").addClass('hidden');
+            // $(".success-message").removeClass('hidden');
         }
     });
 
@@ -681,7 +684,6 @@ watchUpload()
 contactUpload()
 
 function watchUpload() {
-
   var $input = $('#watch-upload')
 
   $input.on('change', function(){
